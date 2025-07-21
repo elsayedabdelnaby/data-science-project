@@ -11,6 +11,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import warnings
 import requests
+import gdown
 
 # Page configuration
 st.set_page_config(
@@ -57,23 +58,19 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def download_file_from_google_drive(file_id, dest_path):
-    """Download a file from Google Drive given its file ID, if not already present."""
     if os.path.exists(dest_path):
         return dest_path
-    URL = "https://drive.google.com/uc?export=download"
-    session = requests.Session()
-    response = session.get(URL, params={'id': file_id}, stream=True)
-    token = None
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-            token = value
-    if token:
-        params = {'id': file_id, 'confirm': token}
-        response = session.get(URL, params=params, stream=True)
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, dest_path, quiet=False)
     with open(dest_path, 'wb') as f:
         for chunk in response.iter_content(32768):
             if chunk:
                 f.write(chunk)
+    # Check if file is HTML (error page)
+    with open(dest_path, 'rb') as f:
+        start = f.read(10)
+        if start.startswith(b'<html>'):
+            raise RuntimeError("Downloaded file is not a valid model file (HTML received). Check Google Drive permissions or quota.")
     return dest_path
 
 # Mapping of model/preprocessor names to Google Drive file IDs
