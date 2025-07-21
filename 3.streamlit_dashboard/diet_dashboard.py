@@ -46,10 +46,10 @@ st.markdown("""
 
 # Google Drive URLs - Converted to direct download links
 GOOGLE_DRIVE_URLS = {
-    'customers': 'https://drive.google.com/uc?export=download&id=1ZhaLzh8VNhjVF5oc7dYlOl63DJR_jYJB',
-    'diet_programs': 'https://drive.google.com/uc?export=download&id=19e6Yh6R0uuYASrdETZTjCTG5492R6Pm0',
-    'customers_subscribers': 'https://drive.google.com/uc?export=download&id=1D6t7pDXQSpa1veAvCMlIIH-p8lL8S6Ds',
-    'selected_items': 'https://drive.google.com/uc?export=download&id=1rxo3JWkwM1K3_o7sC5NozkJlkWcehdXr'
+    'customers': 'https://drive.google.com/file/d/1zJcsv6WFQVo1eNj78XwjJ1vC9fcUkqVr/view?usp=drive_link',
+    'diet_programs': 'https://drive.google.com/file/d/19wrH-s98P_4yGHf5xeInAfhZUnfNe6ay/view?usp=drive_link',
+    'customers_subscribers': 'https://drive.google.com/file/d/1vqxpwQTbh80GILVhrm-id6efxcXjn3mu/view?usp=drive_link',
+    'selected_items': 'https://drive.google.com/file/d/1LBSRtbsYQ3Vmpgw7OaZ2cZWvH5RlyRs9/view?usp=drive_link'
 }
 
 # Load data with caching
